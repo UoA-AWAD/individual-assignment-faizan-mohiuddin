@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  Brand: MyString
+  Variety: MyString
+  Style: MyString
+  Country: MyString
+  Stars: 9.99
+
+two:
+  Brand: MyString
+  Variety: MyString
+  Style: MyString
+  Country: MyString
+  Stars: 9.99
