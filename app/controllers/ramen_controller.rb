@@ -1,5 +1,6 @@
 class RamenController < ApplicationController
   before_action :set_raman, only: [:show, :edit, :update, :destroy]
+  before_action :logged_in?
 
   # GET /ramen
   # GET /ramen.json

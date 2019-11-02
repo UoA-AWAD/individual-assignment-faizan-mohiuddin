@@ -6,12 +6,45 @@
   <title>RamenRate</title>
 </head>
 
+
+
 <body>
 
   <div class = "jumbotron">
     <h1>Welcome to RamenRate</h1>
     <p class = "lead">A website dedicated to showing you the <b>best</b> instant ramen noodles!</p>
   </div>
+
+  <div class = "container">
+
+    <% if current_user %>
+      <div class = "col-xs-10 col-xs-offset-2"><%= "Logged in as user: #{current_user.email}" %> | <%= link_to 'Log Out', logout_path, :class => "btn btn-danger" %></div>
+    <% else %>
+      <div class = "align-left"><b>You are not currently signed in.</b> Sign in to fully utilise RamenRate | <%= link_to 'Sign in', login_path, :class => "btn btn-primary"%></div>
+    <% end %>
+    <hr class = "featurette">
+
+    <h1>Features</h1>
+    <p class = "lead">Here are some of the features included in this website.</p>
+    <div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">All the instant noodles!</h5>
+        <p class="card-text">RamenRate has a whole directory of instant noodles from around the world. Click the button to see our colletion!</p>
+        <a href="/ramen" class="btn btn-primary">Go</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">User Login</h5>
+        <p class="card-text">Yes that's right, you can log in as a normal user that can potentially have admin powers!</p>
+      </div>
+    </div>
+  </div>
+</div>
 
 </body>
 
