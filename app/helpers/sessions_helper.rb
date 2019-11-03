@@ -11,11 +11,18 @@ module SessionsHelper
 
  # Returns true if the user is logged in, false otherwise.
  def logged_in?
-   #!current_user.nil?
    unless User.find_by(id:session[:user_id])
      redirect_to login_url, notice:"Please log in as a user before viewing this page."
    end
  end
+
+ def is_admin?
+    if @current_user.isadmin == true
+      true
+    elsif @current_user.isadmin == false
+      false
+    end
+  end
 
  # Logs out the current user.
   def log_out

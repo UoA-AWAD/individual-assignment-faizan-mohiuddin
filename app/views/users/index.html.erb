@@ -1,14 +1,18 @@
+<% if current_user.isadmin? %>
+<div class = "container">
 <p id="notice"><%= notice %></p>
 
 <h1>Users</h1>
 
-<table>
+<table class = "table">
   <thead>
     <tr>
       <th>Name</th>
       <th>Email</th>
       <th>Password digest</th>
-      <th colspan="3"></th>
+      <th>Admin</th>
+      <th colspan = "3">Commands</th>
+      <th colspan="5"></th>
     </tr>
   </thead>
 
@@ -18,6 +22,7 @@
         <td><%= user.name %></td>
         <td><%= user.email %></td>
         <td><%= user.password_digest %></td>
+        <td><%= user.isadmin %></td>
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -29,3 +34,11 @@
 <br>
 
 <%= link_to 'New User', new_user_path %>
+
+</div>
+
+<% else %>
+
+<p> You must be an admin to view this page.</p>
+
+<% end %>

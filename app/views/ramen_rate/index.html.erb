@@ -18,6 +18,9 @@
   <div class = "container">
 
     <% if current_user %>
+      <% if current_user.isadmin? %>
+        <div class = "alert alert-danger">You are currently signed in as a user with <b>administrator rights</b>.</div>
+      <% end %>
       <div class = "col-xs-10 col-xs-offset-2"><%= "Logged in as user: #{current_user.email}" %> | <%= link_to 'Log Out', logout_path, :class => "btn btn-danger" %></div>
     <% else %>
       <div class = "align-left"><b>You are not currently signed in.</b> Sign in to fully utilise RamenRate | <%= link_to 'Sign in', login_path, :class => "btn btn-primary"%></div>

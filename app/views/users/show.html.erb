@@ -1,3 +1,4 @@
+<% if current_user.id == @user.id || current_user.isadmin? %>
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -15,5 +16,17 @@
   <%= @user.password_digest %>
 </p>
 
+<p>
+  <strong>User type: </strong>
+  <% if @user.isadmin %>
+    Administrator
+  <% else %>
+    Normal User
+  <% end %>
+</p>
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
+<% else %>
+<p>You cannot look at this user's information unless you are the user or an admin!</p>
+<% end %>

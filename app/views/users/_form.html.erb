@@ -40,7 +40,22 @@
   </div>
 </div>
 
-  <div class="actions">
-    <%= form.submit 'Create', :class => 'btn btn-success' %>
+<div class = "form-group row">
+    <%= form.label:isadmin, "Make account admin?", :class => "col-sm-2 col-form-label" %>
+    <div class = "col-sm-10">
+    <%= form.check_box :isadmin, :type => "checkbox", :class => "form-check-input" %>
   </div>
+</div>
+
+<div class="actions">
+  <%= form.submit 'Create', :class => 'btn btn-success' %>
+</div>
+
+<hr class = "featurette">
+<div class = "alert alert-warning">
+  <b>Please note</b> you must log in to your new account after creating it.
+</div>
+
+
+
 <% end %>
