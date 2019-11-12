@@ -22,9 +22,11 @@
         <td><%= raman.Style %></td>
         <td><%= raman.Country %></td>
         <td><%= raman.Stars %></td>
+        <% if current_user.isadmin? %>
         <td><%= link_to 'Show', raman %></td>
         <td><%= link_to 'Edit', edit_raman_path(raman) %></td>
         <td><%= link_to 'Destroy', raman, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
