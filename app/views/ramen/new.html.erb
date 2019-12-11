@@ -1,5 +1,13 @@
+<% if current_user.isadmin? %>
+
 <h1>New Raman</h1>
 
 <%= render 'form', raman: @raman %>
 
 <%= link_to 'Back', ramen_path %>
+
+<% else %>
+
+<p>You need to be admin to view this page.</p>
+
+<% end %>

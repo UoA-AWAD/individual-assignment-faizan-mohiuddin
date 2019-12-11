@@ -2,6 +2,15 @@
 
 <h1>Ramen</h1>
 
+<div class = "form-inline">
+<%= form_tag(ramen_path, method: :get) do %>
+<%= text_field_tag :term, params[:term], placeholder: "search for variety..", class: "form-control" %>
+<%= button_tag "Search", :class => 'btn btn-info',:name => nil%>
+<% end %>
+</div>
+
+<hr class="featurette">
+
 <table class = "table">
   <thead>
     <tr>
@@ -13,6 +22,10 @@
       <th colspan="3"></th>
     </tr>
   </thead>
+
+  <% if current_user.isadmin? %>
+  <a href="/ramen/new" class="btn btn-primary">Add New Ramen</a>
+  <% end %>
 
   <tbody>
     <% @ramen.each do |raman| %>
@@ -27,11 +40,12 @@
         <td><%= link_to 'Edit', edit_raman_path(raman) %></td>
         <td><%= link_to 'Destroy', raman, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
+        <% if not current_user.isadmin? %>
+        <td><a href = "#">Add to Cart</a></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Raman', new_raman_path %>

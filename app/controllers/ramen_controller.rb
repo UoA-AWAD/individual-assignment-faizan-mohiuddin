@@ -5,7 +5,7 @@ class RamenController < ApplicationController
   # GET /ramen
   # GET /ramen.json
   def index
-    @ramen = Raman.all
+    @ramen = Raman.search(params[:term])
   end
 
   # GET /ramen/1
@@ -70,6 +70,6 @@ class RamenController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def raman_params
-      params.require(:raman).permit(:Brand, :Variety, :Style, :Country, :Stars)
+      params.require(:raman).permit(:Brand, :Variety, :Style, :Country, :Stars, :term)
     end
 end
