@@ -1,24 +1,36 @@
-# README
+# README for RamenRate #
+Rails 5.2.4
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A live version is deployed on Heroku, and can be accessed using the following link:
+https://ramenrate.herokuapp.com/ (may take a while to load up)
 
-Things you may want to cover:
+You can use these account details to log in (as required in the last assessment):
 
-* Ruby version
+Note that you are able to create your own admin/normal user accounts.
 
-* System dependencies
+Admin - username: admin@admin.com password: 123456
 
-* Configuration
+Normal user - username: user@user.com password: 123456
 
-* Database creation
 
-* Database initialization
 
-* How to run the test suite
+## running the application locally ##
+Clone the repository into your machine and ```cd``` into it
 
-* Services (job queues, cache servers, search engines, etc.)
+Run ```bundle install```
 
-* Deployment instructions
+Run ```rails db:migrate```
 
-* ...
+Run ```rake products:seed_products```
+
+Launch by typing ```rails s```
+
+Open your web browser (use google chrome) and type localhost:3000 into the address bar
+
+
+
+## These are the parts that are not working correctly ##
+
+mentioned in report
+
+by Faizan Mohiuddin (Student ID: 51874279)
