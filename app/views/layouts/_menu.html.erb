@@ -41,5 +41,11 @@
                     <li class="nav-item">
                         <a href="/ramen" class="nav-link">Ramen</a>
                     </li>
+                    <li class = "nav-item">
+                    <% if current_user %>
+                    <% url = "/users/" + session[:user_id].to_s %>
+                    <%= link_to 'Account', url, class: "nav-link" %>
+                    <% end %>
+                    </li>
                 </ul>
         </nav>
