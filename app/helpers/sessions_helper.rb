@@ -26,8 +26,25 @@ module SessionsHelper
 
  # Logs out the current user.
   def log_out
+    session[:cart] = []
     session.delete(:user_id)
     @current_user = nil
   end
 
+  def clear_cart
+    session[:cart] = []
+  end
+
+  def is_cart_empty?
+
+    numitems = session[:cart].count()
+    numitems.to_i
+
+    if numitems < 1
+      false
+    else
+      true
+    end
+
+  end
 end

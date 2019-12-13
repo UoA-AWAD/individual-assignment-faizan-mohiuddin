@@ -1,11 +1,38 @@
 class RamenController < ApplicationController
   before_action :set_raman, only: [:show, :edit, :update, :destroy]
   before_action :logged_in?
+  before_action :initialise_session
+  before_action :load_cart
 
   # GET /ramen
   # GET /ramen.json
   def index
     @ramen = Raman.search(params[:term])
+  end
+
+  def add_to_cart
+    id = params[:id].to_i
+    session[:cart] << id unless session[:cart].include?(id)
+    redirect_to ramen_path
+  end
+
+  def remove_from_cart
+    id = params[:id].to_i
+    session[:cart].delete(id)
+    redirect_to ramen_path
+  end
+
+
+  def initialise_session
+    session[:cart] ||= []
+  end
+
+  def clear_cart
+    session[:cart] = []
+  end
+
+  def load_cart
+    @cart = Raman.find(session[:cart])
   end
 
   # GET /ramen/1

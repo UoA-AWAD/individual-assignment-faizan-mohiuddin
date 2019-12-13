@@ -20,4 +20,9 @@ class SessionsController < ApplicationController
        redirect_to root_url
   end
 
+  def clearing
+    clear_cart
+    redirect_to ramen_url, notice:"You have successfully placed your order."
+  end
+
 end

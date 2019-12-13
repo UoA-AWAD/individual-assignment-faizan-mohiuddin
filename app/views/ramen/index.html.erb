@@ -1,11 +1,38 @@
+<div class = "container">
+
 <p id="notice"><%= notice %></p>
 
 <h1>Ramen</h1>
 
+<button class = 'btn btn-primary' href = "#showcart" data-toggle="collapse" aria-expanded="false">View cart</button>
+
+<hr>
+
+<div id = "showcart" class = "collapse">
+  <div class = "row">
+    <div class = "col-8">
+      <ul class = "list-group">
+        <% @cart.each do |raman| %>
+          <li class = "list-group-item"><%= raman.Variety %> | <%= raman.Style %> | <%= link_to 'Remove',remove_from_cart_path(raman), method: :delete, class: 'btn btn-danger' %></li>
+        <% end %>
+      </ul>
+      <% if is_cart_empty? %>
+      <%= link_to 'Place Order', clearing_path, class: 'btn btn-success' %>
+      <% else %>
+      Your cart is empty.
+      <% end %>
+    </div>
+    <div class = "col-sm">
+    </div>
+  </div>
+</div>
+
+<hr>
+
 <div class = "form-inline">
 <%= form_tag(ramen_path, method: :get) do %>
 <%= text_field_tag :term, params[:term], placeholder: "search for variety..", class: "form-control" %>
-<%= button_tag "Search", :class => 'btn btn-info',:name => nil%>
+<%= button_tag "Search", :class => 'btn btn-info',:name => nil %>
 <% end %>
 </div>
 
@@ -14,6 +41,7 @@
 <table class = "table">
   <thead>
     <tr>
+      <th>ID</th>
       <th>Brand</th>
       <th>Variety</th>
       <th>Style</th>
@@ -30,6 +58,7 @@
   <tbody>
     <% @ramen.each do |raman| %>
       <tr>
+        <td><%= raman.id %></td>
         <td><%= raman.Brand %></td>
         <td><%= raman.Variety %></td>
         <td><%= raman.Style %></td>
@@ -41,7 +70,11 @@
         <td><%= link_to 'Destroy', raman, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
         <% if not current_user.isadmin? %>
-        <td><a href = "#">Add to Cart</a></td>
+        <% if @cart.include?(raman) %>
+          <td>Already in your cart.</td>
+        <% else %>
+        <td><%= link_to 'Add to Cart', add_to_cart_path(raman.id), method: :post %></td>
+        <% end %>
         <% end %>
       </tr>
     <% end %>
