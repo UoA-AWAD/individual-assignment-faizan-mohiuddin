@@ -1,6 +1,10 @@
+<% if current_user.id == @user.id || current_user.isadmin? %>
 <h1>Editing User</h1>
 
 <%= render 'form', user: @user %>
 
 <%= link_to 'Show', @user %> |
 <%= link_to 'Back', users_path %>
+<% else %>
+You do not have permission to view this page
+<% end %>
